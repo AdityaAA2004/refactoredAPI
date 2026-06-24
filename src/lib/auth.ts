@@ -29,7 +29,7 @@ export function createAuthenticate(tokenService: ITokenService) {
     }
 
     try {
-      req.user = await tokenService.verify<AuthUser>(token);
+      req.user = (await tokenService.verify(token)) as unknown as AuthUser;
       next();
     } catch {
       res.status(401).json({ error: 'Invalid or expired token' });

@@ -3,7 +3,7 @@ export interface UserRecord {
   email: string;
   name: string;
   password: string;
-  bio?: string;
+  bio: string | null;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -14,7 +14,7 @@ export interface UserCreateInput {
   email: string;
   name: string;
   password: string;
-  bio?: string;
+  bio?: string | null;
 }
 
 export type UserUpdateInput = Partial<UserCreateInput>;
