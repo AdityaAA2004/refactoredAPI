@@ -4,6 +4,7 @@ FROM node:20-slim AS deps
 WORKDIR /app
 
 COPY package*.json ./
+COPY scripts/ ./scripts/
 RUN npm install
 
 # ── Stage 2: build ─────────────────────────────────────────────────────────
