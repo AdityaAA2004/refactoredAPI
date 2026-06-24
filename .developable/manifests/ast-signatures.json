@@ -1,0 +1,19 @@
+{
+  "required_classes": {
+    "src/controllers/user.controller.ts": "UserController",
+    "src/repositories/user.repository.ts": "UserRepository",
+    "src/services/user.service.ts": "UserService",
+    "src/controllers/post.controller.ts": "PostController",
+    "src/repositories/post.repository.ts": "PostRepository",
+    "src/services/post.service.ts": "PostService",
+    "src/controllers/comment.controller.ts": "CommentController",
+    "src/repositories/comment.repository.ts": "CommentRepository",
+    "src/services/comment.service.ts": "CommentService",
+    "src/controllers/document.controller.ts": "DocumentController",
+    "src/repositories/document.repository.ts": "DocumentRepository",
+    "src/services/document.service.ts": "DocumentService",
+    "src/controllers/auth.controller.ts": "AuthController",
+    "src/services/auth.service.ts": "AuthService"
+  },
+  "required_exports": {}
+}

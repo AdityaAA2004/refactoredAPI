@@ -1,0 +1,19 @@
+{
+  "managed_by": "developable",
+  "contract_version": "1.0",
+  "repo_mode": "generated",
+  "stack": {
+    "runtime": "node",
+    "framework": "express",
+    "language": "typescript",
+    "orm": "prisma"
+  },
+  "project_name": "blog-rest-backend-schema",
+  "architecture_profile": "express-ts-rest-pragmatic-solid",
+  "test_profile": "python-integration-canonical",
+  "infra_profile": "terraform-managed",
+  "slash_command_required": true,
+  "cli_role": "secondary",
+  "managed_mode": true,
+  "last_applied_at": "2026-06-23T00:00:00.000000Z"
+}

@@ -1,0 +1,27 @@
+security:
+  require_auth_on_write_routes: true
+  inject_owner_fk_server_side: true
+  forbid_client_owned_fk_input: true
+  auth_entity_self_only_update_delete: true
+  hash_sensitive_fields: true
+  exclude_sensitive_fields_from_responses: true
+
+architecture:
+  require_layer_split:
+    - routes
+    - controllers
+    - services
+    - repositories
+    - validators
+    - adapters
+  forbid_prisma_calls_in_controllers: true
+  forbid_validation_logic_in_repositories: true
+
+testing:
+  python_integration_tests_canonical: true
+  require_route_coverage_from_contract: true
+
+infrastructure:
+  require_ci_pipeline: true
+  require_dockerfile: true
+  require_terraform_tracking: true

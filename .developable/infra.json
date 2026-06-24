@@ -1,0 +1,12 @@
+{
+  "profile": "terraform-managed",
+  "dockerfile": "Dockerfile",
+  "compose_file": "docker-compose.yml",
+  "ci_workflow": ".github/workflows/ci.yml",
+  "terraform_files": [],
+  "deployment_tracking": ".developable/infra.json",
+  "managed_hooks": [
+    ".developable/hooks/pre-commit",
+    ".developable/hooks/pre-push"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "profile": "python-integration-canonical",
+  "required": true,
+  "test_runner": "python tests/run_all.py",
+  "files": [],
+  "acceptance_requirements": [
+    "Generated Python integration suite remains the canonical backend acceptance layer.",
+    "Route, security, and ownership behavior must be covered by Python integration tests."
+  ]
+}

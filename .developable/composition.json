@@ -1,0 +1,76 @@
+{
+  "controllers": [
+    {
+      "file": "src/controllers/user.controller.ts",
+      "service_contract": "src/contracts/user.service.contract.ts",
+      "nested_service_contracts": [
+        "src/contracts/post.service.contract.ts",
+        "src/contracts/comment.service.contract.ts"
+      ]
+    },
+    {
+      "file": "src/controllers/post.controller.ts",
+      "service_contract": "src/contracts/post.service.contract.ts",
+      "nested_service_contracts": [
+        "src/contracts/comment.service.contract.ts"
+      ]
+    },
+    {
+      "file": "src/controllers/comment.controller.ts",
+      "service_contract": "src/contracts/comment.service.contract.ts",
+      "nested_service_contracts": []
+    },
+    {
+      "file": "src/controllers/document.controller.ts",
+      "service_contract": "src/contracts/document.service.contract.ts",
+      "nested_service_contracts": []
+    }
+  ],
+  "services": [
+    {
+      "file": "src/services/user.service.ts",
+      "repository_contract": "src/contracts/user.repository.contract.ts",
+      "owner_fk_field": null
+    },
+    {
+      "file": "src/services/post.service.ts",
+      "repository_contract": "src/contracts/post.repository.contract.ts",
+      "owner_fk_field": "authorId"
+    },
+    {
+      "file": "src/services/comment.service.ts",
+      "repository_contract": "src/contracts/comment.repository.contract.ts",
+      "owner_fk_field": "authorId"
+    },
+    {
+      "file": "src/services/document.service.ts",
+      "repository_contract": "src/contracts/document.repository.contract.ts",
+      "owner_fk_field": null
+    }
+  ],
+  "repositories": [
+    {
+      "file": "src/repositories/user.repository.ts",
+      "uses_prisma": true
+    },
+    {
+      "file": "src/repositories/post.repository.ts",
+      "uses_prisma": true
+    },
+    {
+      "file": "src/repositories/comment.repository.ts",
+      "uses_prisma": true
+    },
+    {
+      "file": "src/repositories/document.repository.ts",
+      "uses_prisma": true
+    }
+  ],
+  "auth": {
+    "controller": "src/controllers/auth.controller.ts",
+    "service": "src/services/auth.service.ts",
+    "repository": "src/repositories/user.repository.ts",
+    "token_service": "src/adapters/jwt-token.service.ts",
+    "password_hasher": "src/adapters/bcrypt-password-hasher.ts"
+  }
+}

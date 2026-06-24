@@ -1,0 +1,21 @@
+single_responsibility:
+  routes: declare endpoints and apply middleware only
+  controllers: transport parsing, validation, and response mapping only
+  services: business policy, ownership checks, orchestration only
+  repositories: persistence only
+  adapters: provider integration only
+
+open_closed:
+  token_and_hash_providers_must_be_replaceable_via_contracts: true
+
+liskov_substitution:
+  repository_contracts_must_preserve_not_found_semantics: true
+  service_contracts_must_preserve_authorization_semantics: true
+
+interface_segregation:
+  controllers_depend_only_on_service_contracts: true
+  services_depend_only_on_repository_and_adapter_contracts: true
+
+dependency_inversion:
+  only_bootstrap_knows_concrete_implementations: true
+  repositories_must_not_be_constructed_in_routes_or_controllers: true

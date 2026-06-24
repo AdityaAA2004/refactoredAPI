@@ -1,0 +1,35 @@
+source_layout:
+  routes: src/routes
+  controllers: src/controllers
+  services: src/services
+  repositories: src/repositories
+  validators: src/validators
+  types: src/types
+  contracts: src/contracts
+  adapters: src/adapters
+  bootstrap: src/bootstrap
+  lib: src/lib
+
+dependency_flow:
+  - routes -> bootstrap
+  - bootstrap -> controllers
+  - controllers -> services
+  - services -> repositories
+  - services -> adapters
+  - repositories -> lib/prisma
+
+managed_roots:
+  - src/routes
+  - src/controllers
+  - src/services
+  - src/repositories
+  - src/validators
+  - src/types
+  - src/contracts
+  - src/adapters
+  - src/bootstrap
+
+selected_managed_libs:
+  - src/lib/auth.ts
+  - src/lib/errors.ts
+  - src/lib/pagination.ts

@@ -1,0 +1,627 @@
+{
+  "entities": [
+    {
+      "entity": "User",
+      "base_path": "/api/users",
+      "requires_auth_on_write": true,
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/users",
+          "handler": "getAll",
+          "description": "List all users with pagination and filtering"
+        },
+        {
+          "method": "GET",
+          "path": "/users/:id",
+          "handler": "getById",
+          "description": "Get a single user by ID",
+          "id_type": "number"
+        },
+        {
+          "method": "POST",
+          "path": "/users",
+          "handler": "create",
+          "description": "Create a new user"
+        },
+        {
+          "method": "PUT",
+          "path": "/users/:id",
+          "handler": "update",
+          "description": "Update an existing user",
+          "id_type": "number"
+        },
+        {
+          "method": "DELETE",
+          "path": "/users/:id",
+          "handler": "remove",
+          "description": "Delete a user",
+          "id_type": "number"
+        }
+      ],
+      "nested_routes": [
+        {
+          "relation_name": "posts",
+          "related_entity": "Post",
+          "related_entity_lower": "post",
+          "related_entity_plural": "posts",
+          "fk_field": "authorId",
+          "child_owner_fk_field": null,
+          "has_parent_fk_schema": false,
+          "use_nested_schema": false,
+          "is_primary_parent": true,
+          "filterable_fields": [
+            {
+              "name": "title",
+              "prisma_type": "String",
+              "ts_type": "string",
+              "is_optional": false,
+              "is_list": false,
+              "is_id": false,
+              "is_unique": false,
+              "is_relation": false,
+              "is_sensitive": false,
+              "is_enum": false,
+              "enum_values": [],
+              "is_auto_managed": false,
+              "default": null,
+              "annotations": [],
+              "pk_strategy": null
+            },
+            {
+              "name": "content",
+              "prisma_type": "String",
+              "ts_type": "string",
+              "is_optional": false,
+              "is_list": false,
+              "is_id": false,
+              "is_unique": false,
+              "is_relation": false,
+              "is_sensitive": false,
+              "is_enum": false,
+              "enum_values": [],
+              "is_auto_managed": false,
+              "default": null,
+              "annotations": [],
+              "pk_strategy": null
+            },
+            {
+              "name": "published",
+              "prisma_type": "Boolean",
+              "ts_type": "boolean",
+              "is_optional": false,
+              "is_list": false,
+              "is_id": false,
+              "is_unique": false,
+              "is_relation": false,
+              "is_sensitive": false,
+              "is_enum": false,
+              "enum_values": [],
+              "is_auto_managed": false,
+              "default": "false",
+              "annotations": [
+                "@default(false)"
+              ],
+              "pk_strategy": null
+            },
+            {
+              "name": "authorId",
+              "prisma_type": "Int",
+              "ts_type": "number",
+              "is_optional": false,
+              "is_list": false,
+              "is_id": false,
+              "is_unique": false,
+              "is_relation": false,
+              "is_sensitive": false,
+              "is_enum": false,
+              "enum_values": [],
+              "is_auto_managed": false,
+              "default": null,
+              "annotations": [],
+              "pk_strategy": null
+            }
+          ],
+          "sortable_fields": [
+            {
+              "name": "id",
+              "prisma_type": "Int",
+              "ts_type": "number",
+              "is_optional": false,
+              "is_list": false,
+              "is_id": true,
+              "is_unique": false,
+              "is_relation": false,
+              "is_sensitive": false,
+              "is_enum": false,
+              "enum_values": [],
+              "is_auto_managed": true,
+              "default": "autoincrement()",
+              "annotations": [
+                "@id",
+                "@default(autoincrement()"
+              ],
+              "pk_strategy": "autoincrement"
+            },
+            {
+              "name": "title",
+              "prisma_type": "String",
+              "ts_type": "string",
+              "is_optional": false,
+              "is_list": false,
+              "is_id": false,
+              "is_unique": false,
+              "is_relation": false,
+              "is_sensitive": false,
+              "is_enum": false,
+              "enum_values": [],
+              "is_auto_managed": false,
+              "default": null,
+              "annotations": [],
+              "pk_strategy": null
+            },
+            {
+              "name": "content",
+              "prisma_type": "String",
+              "ts_type": "string",
+              "is_optional": false,
+              "is_list": false,
+              "is_id": false,
+              "is_unique": false,
+              "is_relation": false,
+              "is_sensitive": false,
+              "is_enum": false,
+              "enum_values": [],
+              "is_auto_managed": false,
+              "default": null,
+              "annotations": [],
+              "pk_strategy": null
+            },
+            {
+              "name": "published",
+              "prisma_type": "Boolean",
+              "ts_type": "boolean",
+              "is_optional": false,
+              "is_list": false,
+              "is_id": false,
+              "is_unique": false,
+              "is_relation": false,
+              "is_sensitive": false,
+              "is_enum": false,
+              "enum_values": [],
+              "is_auto_managed": false,
+              "default": "false",
+              "annotations": [
+                "@default(false)"
+              ],
+              "pk_strategy": null
+            },
+            {
+              "name": "authorId",
+              "prisma_type": "Int",
+              "ts_type": "number",
+              "is_optional": false,
+              "is_list": false,
+              "is_id": false,
+              "is_unique": false,
+              "is_relation": false,
+              "is_sensitive": false,
+              "is_enum": false,
+              "enum_values": [],
+              "is_auto_managed": false,
+              "default": null,
+              "annotations": [],
+              "pk_strategy": null
+            }
+          ]
+        },
+        {
+          "relation_name": "comments",
+          "related_entity": "Comment",
+          "related_entity_lower": "comment",
+          "related_entity_plural": "comments",
+          "fk_field": "authorId",
+          "child_owner_fk_field": null,
+          "has_parent_fk_schema": true,
+          "use_nested_schema": false,
+          "is_primary_parent": false,
+          "filterable_fields": [
+            {
+              "name": "body",
+              "prisma_type": "String",
+              "ts_type": "string",
+              "is_optional": false,
+              "is_list": false,
+              "is_id": false,
+              "is_unique": false,
+              "is_relation": false,
+              "is_sensitive": false,
+              "is_enum": false,
+              "enum_values": [],
+              "is_auto_managed": false,
+              "default": null,
+              "annotations": [],
+              "pk_strategy": null
+            },
+            {
+              "name": "authorId",
+              "prisma_type": "Int",
+              "ts_type": "number",
+              "is_optional": false,
+              "is_list": false,
+              "is_id": false,
+              "is_unique": false,
+              "is_relation": false,
+              "is_sensitive": false,
+              "is_enum": false,
+              "enum_values": [],
+              "is_auto_managed": false,
+              "default": null,
+              "annotations": [],
+              "pk_strategy": null
+            },
+            {
+              "name": "postId",
+              "prisma_type": "Int",
+              "ts_type": "number",
+              "is_optional": false,
+              "is_list": false,
+              "is_id": false,
+              "is_unique": false,
+              "is_relation": false,
+              "is_sensitive": false,
+              "is_enum": false,
+              "enum_values": [],
+              "is_auto_managed": false,
+              "default": null,
+              "annotations": [],
+              "pk_strategy": null
+            }
+          ],
+          "sortable_fields": [
+            {
+              "name": "id",
+              "prisma_type": "Int",
+              "ts_type": "number",
+              "is_optional": false,
+              "is_list": false,
+              "is_id": true,
+              "is_unique": false,
+              "is_relation": false,
+              "is_sensitive": false,
+              "is_enum": false,
+              "enum_values": [],
+              "is_auto_managed": true,
+              "default": "autoincrement()",
+              "annotations": [
+                "@id",
+                "@default(autoincrement()"
+              ],
+              "pk_strategy": "autoincrement"
+            },
+            {
+              "name": "body",
+              "prisma_type": "String",
+              "ts_type": "string",
+              "is_optional": false,
+              "is_list": false,
+              "is_id": false,
+              "is_unique": false,
+              "is_relation": false,
+              "is_sensitive": false,
+              "is_enum": false,
+              "enum_values": [],
+              "is_auto_managed": false,
+              "default": null,
+              "annotations": [],
+              "pk_strategy": null
+            },
+            {
+              "name": "authorId",
+              "prisma_type": "Int",
+              "ts_type": "number",
+              "is_optional": false,
+              "is_list": false,
+              "is_id": false,
+              "is_unique": false,
+              "is_relation": false,
+              "is_sensitive": false,
+              "is_enum": false,
+              "enum_values": [],
+              "is_auto_managed": false,
+              "default": null,
+              "annotations": [],
+              "pk_strategy": null
+            },
+            {
+              "name": "postId",
+              "prisma_type": "Int",
+              "ts_type": "number",
+              "is_optional": false,
+              "is_list": false,
+              "is_id": false,
+              "is_unique": false,
+              "is_relation": false,
+              "is_sensitive": false,
+              "is_enum": false,
+              "enum_values": [],
+              "is_auto_managed": false,
+              "default": null,
+              "annotations": [],
+              "pk_strategy": null
+            }
+          ]
+        }
+      ],
+      "owner_fk_field": null
+    },
+    {
+      "entity": "Post",
+      "base_path": "/api/posts",
+      "requires_auth_on_write": true,
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/posts",
+          "handler": "getAll",
+          "description": "List all posts with pagination and filtering"
+        },
+        {
+          "method": "GET",
+          "path": "/posts/:id",
+          "handler": "getById",
+          "description": "Get a single post by ID",
+          "id_type": "number"
+        },
+        {
+          "method": "PUT",
+          "path": "/posts/:id",
+          "handler": "update",
+          "description": "Update an existing post",
+          "id_type": "number"
+        },
+        {
+          "method": "DELETE",
+          "path": "/posts/:id",
+          "handler": "remove",
+          "description": "Delete a post",
+          "id_type": "number"
+        }
+      ],
+      "nested_routes": [
+        {
+          "relation_name": "comments",
+          "related_entity": "Comment",
+          "related_entity_lower": "comment",
+          "related_entity_plural": "comments",
+          "fk_field": "postId",
+          "child_owner_fk_field": "authorId",
+          "has_parent_fk_schema": true,
+          "use_nested_schema": true,
+          "is_primary_parent": true,
+          "filterable_fields": [
+            {
+              "name": "body",
+              "prisma_type": "String",
+              "ts_type": "string",
+              "is_optional": false,
+              "is_list": false,
+              "is_id": false,
+              "is_unique": false,
+              "is_relation": false,
+              "is_sensitive": false,
+              "is_enum": false,
+              "enum_values": [],
+              "is_auto_managed": false,
+              "default": null,
+              "annotations": [],
+              "pk_strategy": null
+            },
+            {
+              "name": "authorId",
+              "prisma_type": "Int",
+              "ts_type": "number",
+              "is_optional": false,
+              "is_list": false,
+              "is_id": false,
+              "is_unique": false,
+              "is_relation": false,
+              "is_sensitive": false,
+              "is_enum": false,
+              "enum_values": [],
+              "is_auto_managed": false,
+              "default": null,
+              "annotations": [],
+              "pk_strategy": null
+            },
+            {
+              "name": "postId",
+              "prisma_type": "Int",
+              "ts_type": "number",
+              "is_optional": false,
+              "is_list": false,
+              "is_id": false,
+              "is_unique": false,
+              "is_relation": false,
+              "is_sensitive": false,
+              "is_enum": false,
+              "enum_values": [],
+              "is_auto_managed": false,
+              "default": null,
+              "annotations": [],
+              "pk_strategy": null
+            }
+          ],
+          "sortable_fields": [
+            {
+              "name": "id",
+              "prisma_type": "Int",
+              "ts_type": "number",
+              "is_optional": false,
+              "is_list": false,
+              "is_id": true,
+              "is_unique": false,
+              "is_relation": false,
+              "is_sensitive": false,
+              "is_enum": false,
+              "enum_values": [],
+              "is_auto_managed": true,
+              "default": "autoincrement()",
+              "annotations": [
+                "@id",
+                "@default(autoincrement()"
+              ],
+              "pk_strategy": "autoincrement"
+            },
+            {
+              "name": "body",
+              "prisma_type": "String",
+              "ts_type": "string",
+              "is_optional": false,
+              "is_list": false,
+              "is_id": false,
+              "is_unique": false,
+              "is_relation": false,
+              "is_sensitive": false,
+              "is_enum": false,
+              "enum_values": [],
+              "is_auto_managed": false,
+              "default": null,
+              "annotations": [],
+              "pk_strategy": null
+            },
+            {
+              "name": "authorId",
+              "prisma_type": "Int",
+              "ts_type": "number",
+              "is_optional": false,
+              "is_list": false,
+              "is_id": false,
+              "is_unique": false,
+              "is_relation": false,
+              "is_sensitive": false,
+              "is_enum": false,
+              "enum_values": [],
+              "is_auto_managed": false,
+              "default": null,
+              "annotations": [],
+              "pk_strategy": null
+            },
+            {
+              "name": "postId",
+              "prisma_type": "Int",
+              "ts_type": "number",
+              "is_optional": false,
+              "is_list": false,
+              "is_id": false,
+              "is_unique": false,
+              "is_relation": false,
+              "is_sensitive": false,
+              "is_enum": false,
+              "enum_values": [],
+              "is_auto_managed": false,
+              "default": null,
+              "annotations": [],
+              "pk_strategy": null
+            }
+          ]
+        }
+      ],
+      "owner_fk_field": "authorId"
+    },
+    {
+      "entity": "Comment",
+      "base_path": "/api/comments",
+      "requires_auth_on_write": true,
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/comments",
+          "handler": "getAll",
+          "description": "List all comments with pagination and filtering"
+        },
+        {
+          "method": "GET",
+          "path": "/comments/:id",
+          "handler": "getById",
+          "description": "Get a single comment by ID",
+          "id_type": "number"
+        },
+        {
+          "method": "PUT",
+          "path": "/comments/:id",
+          "handler": "update",
+          "description": "Update an existing comment",
+          "id_type": "number"
+        },
+        {
+          "method": "DELETE",
+          "path": "/comments/:id",
+          "handler": "remove",
+          "description": "Delete a comment",
+          "id_type": "number"
+        }
+      ],
+      "nested_routes": [],
+      "owner_fk_field": "authorId"
+    },
+    {
+      "entity": "Document",
+      "base_path": "/api/documents",
+      "requires_auth_on_write": true,
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/documents",
+          "handler": "getAll",
+          "description": "List all documents with pagination and filtering"
+        },
+        {
+          "method": "GET",
+          "path": "/documents/:id",
+          "handler": "getById",
+          "description": "Get a single document by ID",
+          "id_type": "string"
+        },
+        {
+          "method": "POST",
+          "path": "/documents",
+          "handler": "create",
+          "description": "Create a new document"
+        },
+        {
+          "method": "PUT",
+          "path": "/documents/:id",
+          "handler": "update",
+          "description": "Update an existing document",
+          "id_type": "string"
+        },
+        {
+          "method": "DELETE",
+          "path": "/documents/:id",
+          "handler": "remove",
+          "description": "Delete a document",
+          "id_type": "string"
+        }
+      ],
+      "nested_routes": [],
+      "owner_fk_field": null
+    }
+  ],
+  "auth": {
+    "entity": "User",
+    "base_path": "/auth",
+    "routes": [
+      {
+        "method": "POST",
+        "path": "/auth/register",
+        "handler": "register"
+      },
+      {
+        "method": "POST",
+        "path": "/auth/login",
+        "handler": "login"
+      }
+    ]
+  }
+}

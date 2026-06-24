@@ -1,0 +1,41 @@
+# AGENTS.md — blog-rest-backend-schema
+
+This backend is **Developable-managed**. If `.developable/contract.json` exists, treat `.developable/*` as the highest-priority backend contract before making any structural change.
+
+## Managed Contract
+
+- `.developable/contract.json` identifies the repo as managed.
+- `.developable/invariants.yaml` defines non-negotiable security rules.
+- `.developable/architecture.yaml` defines layer topology and managed roots.
+- `.developable/solid.yaml` defines SRP/OCP/LSP/ISP/DIP constraints.
+- `.developable/routes.json`, `entities.json`, and `composition.json` describe canonical backend behavior.
+
+## Runtime Shape
+
+```text
+src/
+├── routes/        # Express endpoints and middleware only
+├── controllers/   # Transport parsing, validation, response mapping only
+├── services/      # Business policy, ownership checks, orchestration
+├── repositories/  # Prisma-only persistence boundary
+├── validators/    # Zod validation
+├── types/         # DTOs and record/response types
+├── contracts/     # Dependency inversion interfaces
+├── adapters/      # JWT, hashing, and provider integrations
+├── bootstrap/     # Manual dependency wiring / composition root
+└── lib/           # Shared framework helpers
+```
+
+## Non-Negotiable Rules
+
+- Routes must not import repositories or construct controllers.
+- Controllers must not import repositories, Prisma, `jsonwebtoken`, or `bcryptjs`.
+- Services own authz, ownership, nested-create orchestration, and other business-policy decisions.
+- Repositories are the only Prisma boundary.
+- Adapters are the only place low-level auth/crypto providers may be used.
+- Managed backend files must pass `npm run check:developable`.
+
+## Working Rule
+
+- For ordinary backend feature work, load `.developable/*` even if the user did not invoke `/developable`.
+- If a requested structural change conflicts with `.developable/*`, perform a formal Developable contract/template upgrade instead of drifting the code.

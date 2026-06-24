@@ -1,0 +1,8 @@
+allowed_extension_zones:
+  - src/lib
+  - src/services
+  - src/types
+
+notes:
+  - Extension zones do not permit violating managed layer contracts.
+  - Core managed architecture may only change through a Developable template upgrade.

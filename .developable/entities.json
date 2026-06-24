@@ -1,0 +1,338 @@
+{
+  "auth_entity_name": "User",
+  "entities": [
+    {
+      "name": "User",
+      "name_lower": "user",
+      "name_plural": "users",
+      "is_auth_entity": true,
+      "id_field": "id",
+      "id_type": "number",
+      "owner_fk_field": null,
+      "sensitive_fields": [
+        "password"
+      ],
+      "fields": [
+        {
+          "name": "id",
+          "type": "number",
+          "is_optional": false,
+          "is_relation": false,
+          "is_sensitive": false,
+          "is_auto_managed": true
+        },
+        {
+          "name": "email",
+          "type": "string",
+          "is_optional": false,
+          "is_relation": false,
+          "is_sensitive": false,
+          "is_auto_managed": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "is_optional": false,
+          "is_relation": false,
+          "is_sensitive": false,
+          "is_auto_managed": false
+        },
+        {
+          "name": "password",
+          "type": "string",
+          "is_optional": false,
+          "is_relation": false,
+          "is_sensitive": true,
+          "is_auto_managed": false
+        },
+        {
+          "name": "bio",
+          "type": "string",
+          "is_optional": true,
+          "is_relation": false,
+          "is_sensitive": false,
+          "is_auto_managed": false
+        },
+        {
+          "name": "createdAt",
+          "type": "Date",
+          "is_optional": false,
+          "is_relation": false,
+          "is_sensitive": false,
+          "is_auto_managed": true
+        },
+        {
+          "name": "updatedAt",
+          "type": "Date",
+          "is_optional": false,
+          "is_relation": false,
+          "is_sensitive": false,
+          "is_auto_managed": true
+        },
+        {
+          "name": "posts",
+          "type": "Post[]",
+          "is_optional": false,
+          "is_relation": true,
+          "is_sensitive": false,
+          "is_auto_managed": false
+        },
+        {
+          "name": "comments",
+          "type": "Comment[]",
+          "is_optional": false,
+          "is_relation": true,
+          "is_sensitive": false,
+          "is_auto_managed": false
+        }
+      ],
+      "relations": [
+        {
+          "name": "posts",
+          "related_entity": "Post",
+          "type": "one_to_many",
+          "fk_field": null
+        },
+        {
+          "name": "comments",
+          "related_entity": "Comment",
+          "type": "one_to_many",
+          "fk_field": null
+        }
+      ]
+    },
+    {
+      "name": "Post",
+      "name_lower": "post",
+      "name_plural": "posts",
+      "is_auth_entity": false,
+      "id_field": "id",
+      "id_type": "number",
+      "owner_fk_field": "authorId",
+      "sensitive_fields": [],
+      "fields": [
+        {
+          "name": "id",
+          "type": "number",
+          "is_optional": false,
+          "is_relation": false,
+          "is_sensitive": false,
+          "is_auto_managed": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "is_optional": false,
+          "is_relation": false,
+          "is_sensitive": false,
+          "is_auto_managed": false
+        },
+        {
+          "name": "content",
+          "type": "string",
+          "is_optional": false,
+          "is_relation": false,
+          "is_sensitive": false,
+          "is_auto_managed": false
+        },
+        {
+          "name": "published",
+          "type": "boolean",
+          "is_optional": false,
+          "is_relation": false,
+          "is_sensitive": false,
+          "is_auto_managed": false
+        },
+        {
+          "name": "authorId",
+          "type": "number",
+          "is_optional": false,
+          "is_relation": false,
+          "is_sensitive": false,
+          "is_auto_managed": false
+        },
+        {
+          "name": "author",
+          "type": "User",
+          "is_optional": false,
+          "is_relation": true,
+          "is_sensitive": false,
+          "is_auto_managed": false
+        },
+        {
+          "name": "comments",
+          "type": "Comment[]",
+          "is_optional": false,
+          "is_relation": true,
+          "is_sensitive": false,
+          "is_auto_managed": false
+        },
+        {
+          "name": "createdAt",
+          "type": "Date",
+          "is_optional": false,
+          "is_relation": false,
+          "is_sensitive": false,
+          "is_auto_managed": true
+        },
+        {
+          "name": "updatedAt",
+          "type": "Date",
+          "is_optional": false,
+          "is_relation": false,
+          "is_sensitive": false,
+          "is_auto_managed": true
+        }
+      ],
+      "relations": [
+        {
+          "name": "author",
+          "related_entity": "User",
+          "type": "many_to_one",
+          "fk_field": "authorId"
+        },
+        {
+          "name": "comments",
+          "related_entity": "Comment",
+          "type": "one_to_many",
+          "fk_field": null
+        }
+      ]
+    },
+    {
+      "name": "Comment",
+      "name_lower": "comment",
+      "name_plural": "comments",
+      "is_auth_entity": false,
+      "id_field": "id",
+      "id_type": "number",
+      "owner_fk_field": "authorId",
+      "sensitive_fields": [],
+      "fields": [
+        {
+          "name": "id",
+          "type": "number",
+          "is_optional": false,
+          "is_relation": false,
+          "is_sensitive": false,
+          "is_auto_managed": true
+        },
+        {
+          "name": "body",
+          "type": "string",
+          "is_optional": false,
+          "is_relation": false,
+          "is_sensitive": false,
+          "is_auto_managed": false
+        },
+        {
+          "name": "authorId",
+          "type": "number",
+          "is_optional": false,
+          "is_relation": false,
+          "is_sensitive": false,
+          "is_auto_managed": false
+        },
+        {
+          "name": "postId",
+          "type": "number",
+          "is_optional": false,
+          "is_relation": false,
+          "is_sensitive": false,
+          "is_auto_managed": false
+        },
+        {
+          "name": "author",
+          "type": "User",
+          "is_optional": false,
+          "is_relation": true,
+          "is_sensitive": false,
+          "is_auto_managed": false
+        },
+        {
+          "name": "post",
+          "type": "Post",
+          "is_optional": false,
+          "is_relation": true,
+          "is_sensitive": false,
+          "is_auto_managed": false
+        },
+        {
+          "name": "createdAt",
+          "type": "Date",
+          "is_optional": false,
+          "is_relation": false,
+          "is_sensitive": false,
+          "is_auto_managed": true
+        },
+        {
+          "name": "updatedAt",
+          "type": "Date",
+          "is_optional": false,
+          "is_relation": false,
+          "is_sensitive": false,
+          "is_auto_managed": true
+        }
+      ],
+      "relations": [
+        {
+          "name": "author",
+          "related_entity": "User",
+          "type": "many_to_one",
+          "fk_field": "authorId"
+        },
+        {
+          "name": "post",
+          "related_entity": "Post",
+          "type": "many_to_one",
+          "fk_field": "postId"
+        }
+      ]
+    },
+    {
+      "name": "Document",
+      "name_lower": "document",
+      "name_plural": "documents",
+      "is_auth_entity": false,
+      "id_field": "id",
+      "id_type": "string",
+      "owner_fk_field": null,
+      "sensitive_fields": [],
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "is_optional": false,
+          "is_relation": false,
+          "is_sensitive": false,
+          "is_auto_managed": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "is_optional": false,
+          "is_relation": false,
+          "is_sensitive": false,
+          "is_auto_managed": false
+        },
+        {
+          "name": "content",
+          "type": "string",
+          "is_optional": false,
+          "is_relation": false,
+          "is_sensitive": false,
+          "is_auto_managed": false
+        },
+        {
+          "name": "createdAt",
+          "type": "Date",
+          "is_optional": false,
+          "is_relation": false,
+          "is_sensitive": false,
+          "is_auto_managed": true
+        }
+      ],
+      "relations": []
+    }
+  ]
+}

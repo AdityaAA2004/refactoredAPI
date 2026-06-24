@@ -1,0 +1,36 @@
+# CLAUDE.md — blog-rest-backend-schema
+
+This backend is **Developable-managed**. The runtime code is allowed to evolve, but only inside the semantic contract stored in `.developable/*`.
+
+## Read First
+
+If `.developable/contract.json` exists, read these files before backend edits:
+
+- `.developable/contract.json`
+- `.developable/invariants.yaml`
+- `.developable/architecture.yaml`
+- `.developable/solid.yaml`
+- `.developable/routes.json`
+- `.developable/composition.json`
+
+## Layer Contract
+
+- `routes` declare endpoints and middleware only
+- `controllers` do transport parsing, validation, and response mapping only
+- `services` own business policy, ownership checks, and orchestration
+- `repositories` own all Prisma access
+- `adapters` wrap concrete token/hash providers
+- `bootstrap` wires concrete implementations into contracts
+
+## Security Invariants
+
+- Write routes require authentication when an auth entity exists.
+- Owner foreign keys are injected server-side from `req.user`.
+- Auth-entity update/delete is self-only.
+- Owned-entity update/delete checks ownership before mutation.
+- Sensitive fields are hashed in auth flows and excluded from safe responses.
+- Managed backend files must pass `npm run check:developable` locally and in CI.
+
+## Practical Rule
+
+Do not drift the managed runtime shape. If a feature requires a different architecture than the current `.developable/*` contract allows, treat that as a Developable template upgrade rather than an ad hoc code edit.
